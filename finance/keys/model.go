@@ -42,6 +42,10 @@ type Merchant struct {
 	CertSN string `json:"merchant_cert_sn" bson:"merchant_cert_sn,omitempty"`
 	// 接口key
 	APIKey string `json:"merchant_api_key" bson:"merchant_api_key,omitempty"`
+	// AppID 应用id
+	AppID string `json:"app_id" bson:"app_id,omitempty"`
+	// Callback 回调地址
+	Callback string `json:"callback" bson:"callback,omitempty"`
 }
 
 // ResourceName 返回资源名称
