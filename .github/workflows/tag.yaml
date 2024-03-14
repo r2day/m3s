@@ -19,7 +19,7 @@ jobs:
       - name: Increment version
         id: increment_version
         run: |
-          IFS='.' read -r -a version_parts <<< "${{ steps.latest_tag.outputs.TAG:1 }}"
+          IFS='.' read -r -a version_parts <<< "${{ steps.latest_tag.outputs.TAG }}"
           major="${version_parts[0]}"
           minor="${version_parts[1]}"
           patch="$(( ${version_parts[2]} + 1 ))"
