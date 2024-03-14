@@ -9,7 +9,7 @@ const (
 	// CollectionNamePrefix 数据库表前缀
 	// 可以根据具体业务的需要进行定义
 	// 例如: sys_, scm_, customer_, order_ 等
-	collectionNamePrefix = "finance"
+	collectionNamePrefix = "finance_"
 	// CollectionNameSuffix 后缀
 	// 例如, _log, _config, _flow,
 	collectionNameSuffix = "_config"
