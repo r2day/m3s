@@ -1,29 +1,35 @@
-name: Go Tag
+name: Auto Tag Commit
 
 on:
-  - push
+  push:
+    branches:
+      - main
 
 jobs:
-  build:
+  tag_commit:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version:
-          - 12
-
     steps:
-      - run: echo 00010
-      - uses: actions/checkout@v2
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
-      - run: npm ci
-      - run: npm test
-        env:
-          CI: "true"
-      - uses: phish108/autotag-action@v1.1.55
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN}}
-          with-v: "true"
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Get latest tag
+        id: latest_tag
+        run: echo ::set-output name=TAG::$(git describe --abbrev=0 --tags)
+
+      - name: Increment version
+        id: increment_version
+        run: |
+          IFS='.' read -r -a version_parts <<< "${{ steps.latest_tag.outputs.TAG:1 }}"
+          major="${version_parts[0]}"
+          minor="${version_parts[1]}"
+          patch="$(( ${version_parts[2]} + 1 ))"
+          echo "v$major.$minor.$patch" >> version.txt
+
+      - name: Tag commit
+        if: steps.latest_tag.outputs.TAG != ''
+        run: |
+          new_tag=$(cat version.txt)
+          git tag $new_tag
+          git push origin $new_tag
+
+          echo "Tagged commit with version $new_tag"
