@@ -1,26 +1,36 @@
-name: CI Create Release
+name: Auto Tag Commit
 
 on:
   push:
-    # Sequence of patterns matched against refs/tags
-    tags:
-      - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
+    branches:
+      - main
+
 jobs:
-  build:
-    name: Create Release
+  tag_commit:
     runs-on: ubuntu-latest
+    env:
+      ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
-        with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
-          body: |
-            Please refer to xxx
-          draft: false
-          prerelease: false
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Get latest tag
+        id: latest_tag
+        run: echo ::set-output name=TAG::$(git describe --abbrev=0 --tags)
+
+      - name: Increment version
+        id: increment_version
+        run: |
+          IFS='.' read -r -a version_parts <<< "${{ steps.latest_tag.outputs.TAG }}"
+          major="${version_parts[0]}"
+          minor="${version_parts[1]}"
+          patch="$(( ${version_parts[2]} + 1 ))"
+          echo "v$major.$minor.$patch" >> version.txt
+
+      - name: Tag commit
+        if: steps.latest_tag.outputs.TAG != ''
+        run: |
+          new_tag=$(cat version.txt)
+          git tag -am 'update tag' $new_tag
+          git push --tags
+          echo "Tagged commit with version $new_tag"
