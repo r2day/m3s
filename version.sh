@@ -8,6 +8,9 @@ major=$(echo $latest_tag | cut -d. -f1)
 minor=$(echo $latest_tag | cut -d. -f2)
 patch=$(echo $latest_tag | cut -d. -f3)
 
+# Remove 'v' from the major version if it exists
+major="${major#v}"
+
 # Increment the patch version number
 patch=$((patch + 1))
 
