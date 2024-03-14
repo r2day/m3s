@@ -30,6 +30,6 @@ jobs:
         run: |
           new_tag=$(cat version.txt)
           git tag $new_tag
-          git push origin $new_tag
+          git push --tags
 
           echo "Tagged commit with version $new_tag"
