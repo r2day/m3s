@@ -8,6 +8,8 @@ on:
 jobs:
   tag_commit:
     runs-on: ubuntu-latest
+    env:
+      ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -30,6 +32,5 @@ jobs:
         run: |
           new_tag=$(cat version.txt)
           git tag $new_tag
-          git push --tags
-
+          git push origin $new_tag
           echo "Tagged commit with version $new_tag"
