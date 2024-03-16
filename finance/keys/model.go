@@ -52,7 +52,7 @@ type Merchant struct {
 
 // ResourceName 返回资源名称
 func (m *Model) ResourceName() string {
-	m.Meta = m.GetMeta()
+	//m.Meta = m.GetMeta()
 	return modelName
 }
 
