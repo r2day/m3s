@@ -33,6 +33,8 @@ type Model struct {
 	Type string `json:"type" bson:"type,omitempty"`
 	// 商户配置
 	MerchantConf Merchant `json:"merchant_conf" bson:"merchant_conf,omitempty"`
+	// Enabled 是否启用
+	Enabled bool `json:"enabled" bson:"enabled,omitempty"`
 }
 
 type Merchant struct {
