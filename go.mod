@@ -3,7 +3,7 @@ module github.com/r2day/m3s
 go 1.21.5
 
 require (
-	github.com/open4go/model v0.0.12
+	github.com/open4go/model v0.0.13
 	go.mongodb.org/mongo-driver v1.14.0
 )
 
