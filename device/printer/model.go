@@ -33,7 +33,7 @@ type Model struct {
 	PrinterConf Printer `json:"printer_conf" bson:"printer_conf,omitempty"`
 	// 打印机实时状态
 	// 在线查询api接口，因此不存储到数据库
-	Status bool `json:"status" bson:"_"`
+	Status bool `json:"status" bson:"-"`
 }
 
 type Printer struct {
