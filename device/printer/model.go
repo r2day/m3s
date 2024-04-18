@@ -38,6 +38,7 @@ type Printer struct {
 	User    string `json:"user"  bson:"user"`
 	UserKey string `json:"user_key"  bson:"user_key"`
 	Debug   string `json:"debug"  bson:"debug"`
+	Status  bool   `json:"status" bson:"_"`
 }
 
 // ResourceName 返回资源名称
