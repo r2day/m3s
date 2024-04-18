@@ -31,6 +31,9 @@ type Model struct {
 	Type string `json:"type" bson:"type,omitempty"`
 	// 商户配置
 	PrinterConf Printer `json:"printer_conf" bson:"printer_conf,omitempty"`
+	// 打印机实时状态
+	// 在线查询api接口，因此不存储到数据库
+	Status bool `json:"status" bson:"_"`
 }
 
 type Printer struct {
@@ -38,7 +41,6 @@ type Printer struct {
 	User    string `json:"user"  bson:"user"`
 	UserKey string `json:"user_key"  bson:"user_key"`
 	Debug   string `json:"debug"  bson:"debug"`
-	Status  bool   `json:"status" bson:"_"`
 }
 
 // ResourceName 返回资源名称
