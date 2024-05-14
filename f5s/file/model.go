@@ -38,6 +38,12 @@ type Model struct {
 	Path string `json:"path" bson:"path,omitempty"`
 	// url地址
 	Url string `json:"url" bson:"url,omitempty"`
+	// 宽
+	Width int `json:"width" bson:"width,omitempty"`
+	// 高
+	Height int `json:"height" bson:"height,omitempty"`
+	// 请求访问次数
+	Visits int `json:"visits" bson:"visits,omitempty"`
 }
 
 // ResourceName 返回资源名称
