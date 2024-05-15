@@ -55,7 +55,7 @@ type Model struct {
 
 	// Name 名称
 	Name     string        `json:"name" bson:"name,omitempty"`
-	SenderID string        `json:"sender_id" bson:"name,omitempty"`
+	SenderID string        `json:"sender_id" bson:"sender_id,omitempty"`
 	Title    string        `json:"title" bson:"title,omitempty"`
 	Content  string        `json:"content" bson:"content,omitempty"`
 	Type     MessageType   `json:"type" bson:"type,omitempty"`
