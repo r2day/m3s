@@ -32,10 +32,10 @@ type Model struct {
 	// Background 背景图片
 	Background string `json:"background" bson:"background,omitempty"`
 	// 下单方式按钮 （例如：堂食、自提、外卖）
-	OrderButtons []OrderButton `json:"order_buttons" bson:"order_buttons,omitempty"`
+	Entrances []Entrance `json:"entrances" bson:"entrances,omitempty"`
 }
 
-// OrderButton 使用方式如下:
+// Entrance 使用方式如下:
 // <view class="item" @tap="go2scan">
 //
 //	  <view class="title">堂食2</view>
@@ -43,7 +43,7 @@ type Model struct {
 //	  <view class="sub-name">扫描餐桌二维码点单</view>
 //	  <image src="/static/images/hlj/3-1.png" class="icon"></image>
 //	</view>
-type OrderButton struct {
+type Entrance struct {
 	Tap      string `json:"tap" bson:"tap,omitempty"`
 	Title    string `json:"title" bson:"title,omitempty"`
 	SubTitle string `json:"sub_title" bson:"sub_title,omitempty"`
