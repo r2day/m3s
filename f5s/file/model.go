@@ -17,6 +17,26 @@ const (
 	modelName = "file"
 )
 
+// ImageType 图片类型
+type ImageType int
+
+const (
+	// Default 默认类型
+	Default ImageType = iota
+	// Icon 图标类型 （尺寸较小)
+	Icon
+	// Show 产品展示
+	Show
+	// Background 背景
+	Background
+	// Avatar 头像
+	Avatar
+	// Category 分类图标
+	Category
+	// Advertise 广告类型
+	Advertise
+)
+
 // Model 打印机
 type Model struct {
 	// 模型继承
@@ -26,6 +46,8 @@ type Model struct {
 	ID primitive.ObjectID `json:"id" bson:"_id,omitempty"`
 	// Name 名称
 	Name string `json:"name" bson:"name,omitempty"`
+	// Type 类型
+	Type ImageType `json:"type" bson:"type,omitempty"`
 	// Format 格式 png; jpg; ..
 	Format string `json:"format" bson:"format,omitempty"`
 	// 大小 (单位byte)
