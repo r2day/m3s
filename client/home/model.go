@@ -17,6 +17,18 @@ const (
 	modelName = "home"
 )
 
+// AppType 小程序类型
+type AppType int
+
+const (
+	// WxApp 微信小程序
+	WxApp AppType = iota
+	// AlipayApp 支付宝
+	AlipayApp
+	// DouYin 抖音小程序
+	DouYin
+)
+
 // Model 小程序主页的配置
 type Model struct {
 	// 模型继承
@@ -27,12 +39,18 @@ type Model struct {
 
 	// Name 名称
 	Name string `json:"name" bson:"name,omitempty"`
+	// 小程序类型
+	Type AppType `json:"type" bson:"type,omitempty"`
 	// logo
 	Logo string `json:"logo" bson:"logo,omitempty"`
 	// Background 背景图片
 	Background string `json:"background" bson:"background,omitempty"`
 	// 下单方式按钮 （例如：堂食、自提、外卖）
 	Entrances []Entrance `json:"entrances" bson:"entrances,omitempty"`
+	// 推荐区域的标题（例如：火热的，热销的，招牌的）
+	RecommendTitle string `json:"recommend_title" bson:"recommend_title,omitempty"`
+	// 推荐列表展示
+	RecommendShowList []RecommendShow `json:"recommend_show_list" bson:"recommend_show_list,omitempty"`
 }
 
 // Entrance 使用方式如下:
@@ -49,6 +67,19 @@ type Entrance struct {
 	SubTitle string `json:"sub_title" bson:"sub_title,omitempty"`
 	SubName  string `json:"sub_name" bson:"sub_name,omitempty"`
 	Icon     string `json:"icon" bson:"icon,omitempty"`
+}
+
+// RecommendShow 招牌推荐区域
+//
+//	 <view class="list" v-for="(item, index) in recommendShow" :key="index">
+//	  <view class="item" @tap="clickAndRedirect(item.url)">
+//	    <image mode="widthFix" :src="item.image_url"></image>
+//	  </view>
+//	</view>
+type RecommendShow struct {
+	Title string `json:"title" bson:"title,omitempty"`
+	Url   string `json:"url" bson:"url,omitempty"`
+	Image string `json:"image_url" bson:"image_url,omitempty"`
 }
 
 // ResourceName 返回资源名称
