@@ -2,6 +2,7 @@ package keys
 
 import (
 	"github.com/open4go/model"
+	"github.com/open4go/req5rsp/cst"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
@@ -15,15 +16,6 @@ const (
 	collectionNameSuffix = "_config"
 	// 这个需要用户根据具体业务完成设定
 	modelName = "keys"
-)
-
-type PayUnit int
-
-const (
-	// PayByFen 以分支付
-	PayByFen PayUnit = 1
-	// PayByYuan 以元支付
-	PayByYuan PayUnit = 100
 )
 
 // Model 商品信息
@@ -45,7 +37,7 @@ type Model struct {
 	// Enabled 是否启用
 	Enabled bool `json:"enabled" bson:"enabled,omitempty"`
 	// 支付单位（分/元
-	Unit PayUnit `json:"unit" bson:"unit,omitempty"`
+	Unit cst.PayUnit `json:"unit" bson:"unit,omitempty"`
 }
 
 type Merchant struct {
