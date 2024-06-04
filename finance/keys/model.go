@@ -17,6 +17,15 @@ const (
 	modelName = "keys"
 )
 
+type PayUnit int
+
+const (
+	// PayByFen 以分支付
+	PayByFen PayUnit = 1
+	// PayByYuan 以元支付
+	PayByYuan PayUnit = 100
+)
+
 // Model 商品信息
 type Model struct {
 	// 模型继承
@@ -35,6 +44,8 @@ type Model struct {
 	MerchantConf Merchant `json:"merchant_conf" bson:"merchant_conf,omitempty"`
 	// Enabled 是否启用
 	Enabled bool `json:"enabled" bson:"enabled,omitempty"`
+	// 支付单位（分/元
+	Unit PayUnit `json:"unit" bson:"unit,omitempty"`
 }
 
 type Merchant struct {
