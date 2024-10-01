@@ -51,6 +51,8 @@ type Model struct {
 	RecommendTitle string `json:"recommend_title" bson:"recommend_title,omitempty"`
 	// 推荐列表展示
 	RecommendShowList []RecommendShow `json:"recommend_show_list" bson:"recommend_show_list,omitempty"`
+	// Enable 启用与否
+	Enable bool `json:"enable" bson:"enable,omitempty"`
 }
 
 // Entrance 使用方式如下:
