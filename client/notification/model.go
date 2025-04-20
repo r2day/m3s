@@ -60,6 +60,14 @@ type Model struct {
 	Content  string        `json:"content" bson:"content,omitempty"`
 	Type     MessageType   `json:"type" bson:"type,omitempty"`
 	Status   MessageStatus `json:"message_status" bson:"message_status,omitempty"`
+	// 小程序包类型：main,private,public
+	PackageType string `json:"package_type" bson:"package_type,omitempty"`
+	// 小程序跳转url
+	Url string `json:"url" bson:"url,omitempty"`
+	// PublishTime 发布时间
+	PublishTime int64 `json:"publish_time" bson:"publish_time,omitempty"`
+	// EndTime 结束时间
+	EndTime int64 `json:"end_time" bson:"end_time,omitempty"`
 }
 
 // ResourceName 返回资源名称
