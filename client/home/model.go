@@ -79,9 +79,14 @@ type Entrance struct {
 //	  </view>
 //	</view>
 type RecommendShow struct {
+	// 标题
 	Title string `json:"title" bson:"title,omitempty"`
-	Url   string `json:"url" bson:"url,omitempty"`
+	// 图片地址
 	Image string `json:"image_url" bson:"image_url,omitempty"`
+	// PackageType 包类型：main,public, private
+	PackageType string `json:"package_type" bson:"package_type,omitempty"`
+	// 根据包类型推荐不同的url
+	Url string `json:"url" bson:"url,omitempty"`
 }
 
 // ResourceName 返回资源名称
