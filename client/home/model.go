@@ -46,11 +46,11 @@ type Model struct {
 	// Background 背景图片
 	Background string `json:"background" bson:"background,omitempty"`
 	// 下单方式按钮 （例如：堂食、自提、外卖）
-	Entrances []Entrance `json:"entrances" bson:"entrances,omitempty"`
+	Entrances []*Entrance `json:"entrances" bson:"entrances,omitempty"`
 	// 推荐区域的标题（例如：火热的，热销的，招牌的）
 	RecommendTitle string `json:"recommend_title" bson:"recommend_title,omitempty"`
 	// 推荐列表展示
-	RecommendShowList []RecommendShow `json:"recommend_show_list" bson:"recommend_show_list,omitempty"`
+	RecommendShowList []*RecommendShow `json:"recommend_show_list" bson:"recommend_show_list,omitempty"`
 	// Enable 启用与否
 	Enable bool `json:"enable" bson:"enable,omitempty"`
 }
