@@ -68,6 +68,8 @@ type Model struct {
 	PublishTime int64 `json:"publish_time" bson:"publish_time,omitempty"`
 	// EndTime 结束时间
 	EndTime int64 `json:"end_time" bson:"end_time,omitempty"`
+	// 点击数 click_count
+	ClickCount int64 `json:"click_count" bson:"click_count,omitempty"`
 }
 
 // ResourceName 返回资源名称
