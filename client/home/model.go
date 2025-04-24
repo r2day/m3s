@@ -50,9 +50,12 @@ type Model struct {
 	// 推荐区域的标题（例如：火热的，热销的，招牌的）
 	RecommendTitle string `json:"recommend_title" bson:"recommend_title,omitempty"`
 	// 推荐列表展示
-	RecommendShowList []*RecommendShow `json:"recommend_show_list" bson:"recommend_show_list,omitempty"`
+	RecommendShowList []*ImageDisplayConfig `json:"recommend_show_list" bson:"recommend_show_list,omitempty"`
 	// Enable 启用与否
 	Enable bool `json:"enable" bson:"enable,omitempty"`
+
+	// MenuConfig 新方案
+	MenuConfig MenuPageConfig `json:"menu_config" bson:"menu_config,omitempty"`
 }
 
 // Entrance 使用方式如下:
@@ -71,14 +74,14 @@ type Entrance struct {
 	Icon     string `json:"icon" bson:"icon,omitempty"`
 }
 
-// RecommendShow 招牌推荐区域
+// ImageDisplayConfig 招牌推荐区域
 //
 //	 <view class="list" v-for="(item, index) in recommendShow" :key="index">
 //	  <view class="item" @tap="clickAndRedirect(item.url)">
 //	    <image mode="widthFix" :src="item.image_url"></image>
 //	  </view>
 //	</view>
-type RecommendShow struct {
+type ImageDisplayConfig struct {
 	// 标题
 	Title string `json:"title" bson:"title,omitempty"`
 	// 图片地址
@@ -87,6 +90,22 @@ type RecommendShow struct {
 	PackageType string `json:"package_type" bson:"package_type,omitempty"`
 	// 根据包类型推荐不同的url
 	Url string `json:"url" bson:"url,omitempty"`
+	// 图片停留时长
+	Stay int `json:"stay" bson:"stay,omitempty"`
+	// 图片类型
+	Type int `json:"type" bson:"type,omitempty"`
+}
+
+// MenuPageConfig 菜单页面配置管理
+type MenuPageConfig struct {
+	// 是否展示跑马灯
+	ShowMarquee bool `json:"show_marquee" bson:"show_marquee,omitempty"`
+	// 标题 home, menu, order, mine
+	Title string `json:"title" bson:"title,omitempty"`
+	// 轮播图片展示
+	Carousel []*ImageDisplayConfig `json:"carousel" bson:"carousel,omitempty"`
+	// 购物车图标
+	CartIcon string `json:"cart_icon" bson:"cart_icon,omitempty"`
 }
 
 // ResourceName 返回资源名称
