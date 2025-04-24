@@ -54,6 +54,9 @@ type Model struct {
 	// Enable 启用与否
 	Enable bool `json:"enable" bson:"enable,omitempty"`
 
+	// 底部导航
+	Tabs []string `json:"tabs" bson:"tabs,omitempty"`
+
 	// MenuConfig 新方案
 	MenuConfig MenuPageConfig `json:"menu_config" bson:"menu_config,omitempty"`
 }
