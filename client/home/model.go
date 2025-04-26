@@ -56,7 +56,8 @@ type Model struct {
 
 	// 底部导航
 	Tabs []string `json:"tabs" bson:"tabs,omitempty"`
-
+	// HomeConfig 主页配置
+	HomeConfig HomePageConfig `json:"home_config" bson:"home_config,omitempty"`
 	// MenuConfig 新方案
 	MenuConfig MenuPageConfig `json:"menu_config" bson:"menu_config,omitempty"`
 }
@@ -97,6 +98,22 @@ type ImageDisplayConfig struct {
 	Stay int `json:"stay" bson:"stay,omitempty"`
 	// 图片类型
 	Type int `json:"type" bson:"type,omitempty"`
+}
+
+// HomePageConfig 主页页面配置管理
+type HomePageConfig struct {
+	// 轮播背景图片展示
+	Background []*ImageDisplayConfig `json:"background" bson:"background,omitempty"`
+	// Greeting 问候语，例如：Hello, Frank
+	Greeting string `json:"greeting" bson:"greeting,omitempty"`
+	// Remark 备注信息
+	Remark string `json:"remark" bson:"remark,omitempty"`
+	// ShowMerchantName 是否展示门店名称
+	ShowMerchantName bool `json:"show_merchant_name" bson:"show_merchant_name,omitempty"`
+	// 下单方式按钮 （例如：堂食、自提、外卖）
+	Entrances []*Entrance `json:"entrances" bson:"entrances,omitempty"`
+	// 推荐列表展示
+	RecommendShowList []*ImageDisplayConfig `json:"recommend_show_list" bson:"recommend_show_list,omitempty"`
 }
 
 // MenuPageConfig 菜单页面配置管理
