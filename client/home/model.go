@@ -118,6 +118,14 @@ type HomePageConfig struct {
 
 // MenuPageConfig 菜单页面配置管理
 type MenuPageConfig struct {
+	// ShowMerchantName 是否展示门店名称
+	ShowMerchantName bool `json:"show_merchant_name" bson:"show_merchant_name,omitempty"`
+	// ShowPickUpSwitch 是否展示自提/外卖切换按钮
+	ShowPickUpSwitch bool `json:"show_pick_up_switch" bson:"show_pick_up_switch,omitempty"`
+	// ShowPickUpSwitch 是否展示距离门店的距离
+	ShowDistance bool `json:"show_distance" bson:"show_distance,omitempty"`
+	// ShowCategory 是否展示左侧类型选择
+	ShowCategory bool `json:"show_category" bson:"show_category,omitempty"`
 	// 是否展示跑马灯
 	ShowMarquee bool `json:"show_marquee" bson:"show_marquee,omitempty"`
 	// 标题 home, menu, order, mine
