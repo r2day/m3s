@@ -60,6 +60,10 @@ type Model struct {
 	HomeConfig HomePageConfig `json:"home_config" bson:"home_config,omitempty"`
 	// MenuConfig 新方案
 	MenuConfig MenuPageConfig `json:"menu_config" bson:"menu_config,omitempty"`
+	// OrderConfig 新方案
+	OrderConfig OrderPageConfig `json:"order_config" bson:"order_config,omitempty"`
+	// ProfileConfig 新方案
+	ProfileConfig ProfilePageConfig `json:"profile_config" bson:"profile_config,omitempty"`
 }
 
 // Entrance 使用方式如下:
@@ -114,6 +118,33 @@ type HomePageConfig struct {
 	Entrances []*Entrance `json:"entrances" bson:"entrances,omitempty"`
 	// 推荐列表展示
 	RecommendShowList []*ImageDisplayConfig `json:"recommend_show_list" bson:"recommend_show_list,omitempty"`
+}
+
+type OrderPageConfig struct {
+	// ShowMerchantName 是否展示门店名称
+	ShowMerchantName bool `json:"show_merchant_name" bson:"show_merchant_name,omitempty"`
+	// ShowNavigateName 是否展示门店定位
+	ShowNavigate bool `json:"show_navigate" bson:"show_navigate,omitempty"`
+	// ShowPhone 是否展示门店定位
+	ShowPhone bool `json:"show_phone" bson:"show_phone,omitempty"`
+	// OrderProcess 订单状态进度
+	OrderProcess OrderProcessConfig `json:"order_process" bson:"order_process,omitempty"`
+}
+
+type OrderProcessConfig struct {
+	// OrderInit 订单初始化
+	OrderInit string `json:"order_init" bson:"order_init,omitempty"`
+	// OrderInitDone 订单初始化
+	OrderInitDone string `json:"order_init_done" bson:"order_init_done,omitempty"`
+	// OrderPay 订单支付
+	OrderPay string `json:"order_pay" bson:"order_pay,omitempty"`
+	// OrderPaid 订单支付完毕
+	OrderPaid string `json:"order_paid" bson:"order_paid,omitempty"`
+}
+
+type ProfilePageConfig struct {
+	// Service 服务设置
+	Service []ImageDisplayConfig `json:"service" bson:"service,omitempty"`
 }
 
 // MenuPageConfig 菜单页面配置管理
