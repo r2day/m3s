@@ -131,6 +131,7 @@ type OrderPageConfig struct {
 	OrderProcess OrderProcessConfig `json:"order_process" bson:"order_process,omitempty"`
 }
 
+// OrderProcessConfig 订单状态图标设置
 type OrderProcessConfig struct {
 	// OrderInit 订单初始化
 	OrderInit string `json:"order_init" bson:"order_init,omitempty"`
@@ -140,6 +141,10 @@ type OrderProcessConfig struct {
 	OrderPay string `json:"order_pay" bson:"order_pay,omitempty"`
 	// OrderPaid 订单支付完毕
 	OrderPaid string `json:"order_paid" bson:"order_paid,omitempty"`
+	// OrderReadyTake 订单待取餐
+	OrderReadyTake string `json:"order_ready_take" bson:"order_ready_take,omitempty"`
+	// OrderDone 订单完毕
+	OrderDone string `json:"order_done" bson:"order_done,omitempty"`
 }
 
 type ProfilePageConfig struct {
