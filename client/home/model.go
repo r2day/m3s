@@ -43,10 +43,8 @@ type Model struct {
 	Type AppType `json:"type" bson:"type,omitempty"`
 	// logo
 	Logo string `json:"logo" bson:"logo,omitempty"`
-	// Background 背景图片
+	// Background 背景颜色
 	Background string `json:"background" bson:"background,omitempty"`
-	// 下单方式按钮 （例如：堂食、自提、外卖）
-	Entrances []*Entrance `json:"entrances" bson:"entrances,omitempty"`
 	// 推荐区域的标题（例如：火热的，热销的，招牌的）
 	RecommendTitle string `json:"recommend_title" bson:"recommend_title,omitempty"`
 	// 推荐列表展示
@@ -75,11 +73,18 @@ type Model struct {
 //	  <image src="/static/images/hlj/3-1.png" class="icon"></image>
 //	</view>
 type Entrance struct {
-	Tap      string `json:"tap" bson:"tap,omitempty"`
-	Title    string `json:"title" bson:"title,omitempty"`
+	// 操作的函数
+	Tap string `json:"tap" bson:"tap,omitempty"`
+	// 主标题
+	Title string `json:"title" bson:"title,omitempty"`
+	// 子标题
 	SubTitle string `json:"sub_title" bson:"sub_title,omitempty"`
-	SubName  string `json:"sub_name" bson:"sub_name,omitempty"`
-	Icon     string `json:"icon" bson:"icon,omitempty"`
+	// 英文名称
+	SubName string `json:"sub_name" bson:"sub_name,omitempty"`
+	// 图标
+	Icon string `json:"icon" bson:"icon,omitempty"`
+	// 背景图片或者颜色
+	Background string `json:"background" bson:"background,omitempty"`
 }
 
 // ImageDisplayConfig 招牌推荐区域
@@ -118,6 +123,8 @@ type HomePageConfig struct {
 	Entrances []*Entrance `json:"entrances" bson:"entrances,omitempty"`
 	// 推荐列表展示
 	RecommendShowList []*ImageDisplayConfig `json:"recommend_show_list" bson:"recommend_show_list,omitempty"`
+	// 快速导航
+	Navigators []*Entrance `json:"navigators" bson:"navigators,omitempty"`
 }
 
 type OrderPageConfig struct {
