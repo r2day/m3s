@@ -52,6 +52,8 @@ type Model struct {
 	// Enable 启用与否
 	Enable bool `json:"enable" bson:"enable,omitempty"`
 
+	// Base 基本图标
+	Base BaseIcon `json:"base" bson:"base,omitempty"`
 	// 底部导航
 	Tabs []string `json:"tabs" bson:"tabs,omitempty"`
 	// HomeConfig 主页配置
@@ -62,6 +64,33 @@ type Model struct {
 	OrderConfig OrderPageConfig `json:"order_config" bson:"order_config,omitempty"`
 	// ProfileConfig 新方案
 	ProfileConfig ProfilePageConfig `json:"profile_config" bson:"profile_config,omitempty"`
+}
+
+type BaseIcon struct {
+	// 加载图标
+	Loading string `json:"loading" bson:"loading,omitempty"`
+	// 奖杯
+	Cup string `json:"cup" bson:"cup,omitempty"`
+	// Avatar 头像
+	Avatar string `json:"avatar" bson:"avatar,omitempty"`
+	// Role 吉祥物角色
+	Role string `json:"role" bson:"role,omitempty"`
+	// Level 等级图标，例如vip
+	Level string `json:"level" bson:"level,omitempty"`
+	// QRCode 二维码
+	QRCode string `json:"qr_code" bson:"qr_code,omitempty"`
+	// PreButton 向上箭头
+	PreButton string `json:"pre_button" bson:"pre_button,omitempty"`
+	// NextButton 向下箭头
+	NextButton string `json:"next_button" bson:"next_button,omitempty"`
+	// Service 客服图标
+	Service string `json:"service" bson:"service,omitempty"`
+	// Location 定位/地址图标
+	Location string `json:"location" bson:"location,omitempty"`
+	// Order 订单图标
+	Order string `json:"order" bson:"order,omitempty"`
+	// Packages 圈包图标
+	Packages string `json:"packages" bson:"packages,omitempty"`
 }
 
 // Entrance 使用方式如下:
