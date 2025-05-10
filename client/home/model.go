@@ -91,6 +91,18 @@ type BaseIcon struct {
 	Order string `json:"order" bson:"order,omitempty"`
 	// Packages 圈包图标
 	Packages string `json:"packages" bson:"packages,omitempty"`
+	// Mobile 手机图标
+	Mobile string `json:"mobile" bson:"mobile,omitempty"`
+	// Navigation 导航图标
+	Navigation string `json:"navigation" bson:"navigation,omitempty"`
+	// Copy 拷贝图标
+	Copy string `json:"copy" bson:"copy,omitempty"`
+	// Bottom 底部边条
+	Bottom string `json:"bottom" bson:"bottom,omitempty"`
+	// Time 时间
+	Time string `json:"time" bson:"time,omitempty"`
+	// Close 关闭
+	Close string `json:"close" bson:"close,omitempty"`
 }
 
 // Entrance 使用方式如下:
