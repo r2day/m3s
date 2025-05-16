@@ -36,7 +36,6 @@ type Model struct {
 	// 基本的数据库模型字段，一般情况所有model都应该包含如下字段
 	// 创建时（用户上传的数据为空，所以默认可以不传该值)
 	ID primitive.ObjectID `json:"id" bson:"_id,omitempty"`
-
 	// Name 名称
 	Name string `json:"name" bson:"name,omitempty"`
 	// 小程序类型
@@ -51,7 +50,6 @@ type Model struct {
 	RecommendShowList []*ImageDisplayConfig `json:"recommend_show_list" bson:"recommend_show_list,omitempty"`
 	// Enable 启用与否
 	Enable bool `json:"enable" bson:"enable,omitempty"`
-
 	// Base 基本图标
 	Base BaseIcon `json:"base" bson:"base,omitempty"`
 	// 底部导航
@@ -64,6 +62,10 @@ type Model struct {
 	OrderConfig OrderPageConfig `json:"order_config" bson:"order_config,omitempty"`
 	// ProfileConfig 新方案
 	ProfileConfig ProfilePageConfig `json:"profile_config" bson:"profile_config,omitempty"`
+	// Remarks 备注可选项
+	Remarks []string `json:"remarks" bson:"remarks,omitempty"`
+	// DineTime 取餐时间
+	DineTime []string `json:"dine_time" bson:"dine_time,omitempty"`
 }
 
 type BaseIcon struct {
