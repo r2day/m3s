@@ -3,7 +3,7 @@ module github.com/r2day/m3s
 go 1.24.0
 
 require (
-	github.com/open4go/model v0.0.23
+	github.com/open4go/model v0.0.24
 	github.com/open4go/req5rsp v0.1.21
 	go.mongodb.org/mongo-driver v1.17.3
 )
@@ -48,6 +48,7 @@ require (
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
 	github.com/modern-go/reflect2 v1.0.2 // indirect
 	github.com/montanaflynn/stats v0.7.1 // indirect
+	github.com/open4go/db v0.0.13 // indirect
 	github.com/open4go/log v0.0.17 // indirect
 	github.com/open4go/r3time v0.0.6 // indirect
 	github.com/opencontainers/go-digest v1.0.0 // indirect

@@ -66,6 +66,8 @@ type Model struct {
 	Remarks []string `json:"remarks" bson:"remarks,omitempty"`
 	// DineTime 取餐时间
 	DineTime []string `json:"dine_time" bson:"dine_time,omitempty"`
+	// ApiRefreshConfigs 接口刷新策略配置
+	ApiRefreshConfigs []*ApiRefreshRule `json:"api_refresh_configs" bson:"api_refresh_configs,omitempty"`
 }
 
 type BaseIcon struct {
@@ -220,6 +222,23 @@ type MenuPageConfig struct {
 	Carousel []*ImageDisplayConfig `json:"carousel" bson:"carousel,omitempty"`
 	// 购物车图标
 	CartIcon string `json:"cart_icon" bson:"cart_icon,omitempty"`
+}
+
+// ApiRefreshRule 接口刷新策略
+type ApiRefreshRule struct {
+	// 接口路径（不含域名）
+	Path string `json:"path" bson:"path,omitempty"`
+
+	// 刷新间隔（秒）
+	// 3600 = 1小时
+	// 7200 = 2小时
+	RefreshInterval int64 `json:"refresh_interval" bson:"refresh_interval,omitempty"`
+
+	// 是否启用
+	Enable bool `json:"enable" bson:"enable,omitempty"`
+
+	// 说明（可选，方便后台配置人员）
+	Remark string `json:"remark" bson:"remark,omitempty"`
 }
 
 // ResourceName 返回资源名称
