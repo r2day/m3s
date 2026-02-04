@@ -68,6 +68,8 @@ type Model struct {
 	DineTime []string `json:"dine_time" bson:"dine_time,omitempty"`
 	// ApiRefreshConfigs 接口刷新策略配置
 	ApiRefreshConfigs []*ApiRefreshRule `json:"api_refresh_configs" bson:"api_refresh_configs,omitempty"`
+	// 登录页面配置
+	Login LoginPage `json:"login" bson:"login,omitempty"`
 }
 
 type BaseIcon struct {
@@ -239,6 +241,32 @@ type ApiRefreshRule struct {
 
 	// 说明（可选，方便后台配置人员）
 	Remark string `json:"remark" bson:"remark,omitempty"`
+}
+
+type LoginPage struct {
+	// 背景
+	Background string `json:"background" bson:"background,omitempty"`
+	// 主体 (创造更多美好，尽在xxx)
+	Content string `json:"content" bson:"content,omitempty"`
+	// 登录按钮
+	Button ButtonAddr `json:"login" bson:"login,omitempty"`
+	// Foot 底标 新用户登录即拥有会员xxx
+	Foot string `json:"foot" bson:"foot,omitempty"`
+	// 底部按钮列表 (入会有礼，生日特权，联系客服，积分商场，积分兑换）
+	Bottom []ButtonAddr `json:"bottom" bson:"bottom,omitempty"`
+}
+
+type ButtonAddr struct {
+	// 标题
+	Title string `json:"title" bson:"title,omitempty"`
+	// 小标
+	Icon string `json:"icon" bson:"icon,omitempty"`
+	// 背景
+	Background string `json:"background" bson:"background,omitempty"`
+	// 主体 (一键登录)
+	Content string `json:"content" bson:"content,omitempty"`
+	// 颜色
+	Color string `json:"color" bson:"color,omitempty"`
 }
 
 // ResourceName 返回资源名称
