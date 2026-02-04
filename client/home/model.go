@@ -253,7 +253,7 @@ type LoginPage struct {
 	// Foot 底标 新用户登录即拥有会员xxx
 	Foot string `json:"foot" bson:"foot,omitempty"`
 	// 底部按钮列表 (入会有礼，生日特权，联系客服，积分商场，积分兑换）
-	Bottom []ButtonAddr `json:"bottom" bson:"bottom,omitempty"`
+	Bottom []*Entrance `json:"bottom" bson:"bottom,omitempty"`
 }
 
 type ButtonAddr struct {
