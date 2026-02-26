@@ -70,6 +70,8 @@ type Model struct {
 	ApiRefreshConfigs []*ApiRefreshRule `json:"api_refresh_configs" bson:"api_refresh_configs,omitempty"`
 	// 登录页面配置
 	Login LoginPage `json:"login" bson:"login,omitempty"`
+	// Loading 加载页面
+	Loading LoadingConfig `json:"loading" bson:"loading,omitempty"`
 }
 
 type BaseIcon struct {
@@ -224,6 +226,10 @@ type MenuPageConfig struct {
 	Carousel []*ImageDisplayConfig `json:"carousel" bson:"carousel,omitempty"`
 	// 购物车图标
 	CartIcon string `json:"cart_icon" bson:"cart_icon,omitempty"`
+	// 是否展示销售数量
+	ShowSales bool `json:"show_sales" bson:"show_sales,omitempty"`
+	// 是否展示库存
+	ShowStock bool `json:"show_stock" bson:"show_stock,omitempty"`
 }
 
 // ApiRefreshRule 接口刷新策略
@@ -267,6 +273,59 @@ type ButtonAddr struct {
 	Content string `json:"content" bson:"content,omitempty"`
 	// 颜色
 	Color string `json:"color" bson:"color,omitempty"`
+}
+
+// LoadingConfig 加载页配置
+type LoadingConfig struct {
+
+	// 是否启用加载页
+	Enabled bool `json:"enabled" bson:"enabled"`
+
+	// 作用域：global | page | component
+	Scope string `json:"scope" bson:"scope,omitempty"`
+
+	// 加载模式：page(整页) | api(接口) | manual(手动控制)
+	Mode string `json:"mode" bson:"mode,omitempty"`
+
+	// 加载类型：default | custom | skeleton
+	Type string `json:"type" bson:"type,omitempty"`
+
+	// 提示文案
+	Text string `json:"text" bson:"text,omitempty"`
+
+	// 最小展示时间（毫秒）
+	Duration int64 `json:"duration" bson:"duration,omitempty"`
+
+	// 背景颜色
+	BackgroundColor string `json:"backgroundColor" bson:"backgroundColor,omitempty"`
+
+	// 是否显示遮罩（禁止点击）
+	Mask bool `json:"mask" bson:"mask"`
+
+	// 超时时间（毫秒）
+	Timeout int64 `json:"timeout" bson:"timeout,omitempty"`
+
+	// 页面白名单
+	Pages []string `json:"pages" bson:"pages,omitempty"`
+
+	// 页面黑名单
+	ExcludePages []string `json:"excludePages" bson:"excludePages,omitempty"`
+
+	// 加载动画配置
+	Spinner SpinnerConfig `json:"spinner" bson:"spinner,omitempty"`
+}
+
+// SpinnerConfig 加载动画配置
+type SpinnerConfig struct {
+
+	// 类型：circle | dots | bar | custom
+	Type string `json:"type" bson:"type,omitempty"`
+	// 图片
+	Image string `json:"image" bson:"image,omitempty"`
+	// 颜色
+	Color string `json:"color" bson:"color,omitempty"`
+	// 大小（rpx 或 px）
+	Size int `json:"size" bson:"size,omitempty"`
 }
 
 // ResourceName 返回资源名称
