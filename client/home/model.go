@@ -72,6 +72,8 @@ type Model struct {
 	Login LoginPage `json:"login" bson:"login,omitempty"`
 	// Loading 加载页面
 	Loading LoadingConfig `json:"loading" bson:"loading,omitempty"`
+	// InviteConfig 邀请好友页面配置
+	InviteConfig InvitePageConfig `json:"invite_config" bson:"invite_config,omitempty"`
 }
 
 type BaseIcon struct {
@@ -326,6 +328,116 @@ type SpinnerConfig struct {
 	Color string `json:"color" bson:"color,omitempty"`
 	// 大小（rpx 或 px）
 	Size int `json:"size" bson:"size,omitempty"`
+}
+
+// InvitePageConfig 邀请好友页面配置
+type InvitePageConfig struct {
+
+	// 是否启用邀请页
+	Enable bool `json:"enable" bson:"enable,omitempty"`
+
+	// 页面标题
+	Title string `json:"title" bson:"title,omitempty"`
+
+	// 背景图
+	Background string `json:"background" bson:"background,omitempty"`
+
+	// 邀请规则配置
+	Rule InviteRuleConfig `json:"rule" bson:"rule,omitempty"`
+
+	// 文案配置
+	Text InviteTextConfig `json:"text" bson:"text,omitempty"`
+
+	// 图片配置
+	Images InviteImageConfig `json:"images" bson:"images,omitempty"`
+
+	// 分享配置
+	Share InviteShareConfig `json:"share" bson:"share,omitempty"`
+
+	// 是否显示进度条
+	ShowProgress bool `json:"show_progress" bson:"show_progress,omitempty"`
+
+	// 是否显示奖励统计
+	ShowRewardStat bool `json:"show_reward_stat" bson:"show_reward_stat,omitempty"`
+}
+
+// InviteRuleConfig 邀请规则
+type InviteRuleConfig struct {
+
+	// 邀请目标人数（例如3人得奖励）
+	TargetCount int `json:"target_count" bson:"target_count,omitempty"`
+
+	// 奖励类型：coupon | points | cash | gift
+	RewardType string `json:"reward_type" bson:"reward_type,omitempty"`
+
+	// 奖励值（例如5元券 = 5）
+	RewardValue float64 `json:"reward_value" bson:"reward_value,omitempty"`
+
+	// 奖励描述
+	RewardDesc string `json:"reward_desc" bson:"reward_desc,omitempty"`
+
+	// 新用户奖励描述
+	NewUserRewardDesc string `json:"new_user_reward_desc" bson:"new_user_reward_desc,omitempty"`
+
+	// 是否循环奖励（满3人继续再奖励）
+	Repeatable bool `json:"repeatable" bson:"repeatable,omitempty"`
+}
+
+// InviteTextConfig 邀请页文案
+type InviteTextConfig struct {
+
+	// 主规则文案
+	Rule1 string `json:"rule1" bson:"rule1,omitempty"`
+
+	// 副规则文案
+	Rule2 string `json:"rule2" bson:"rule2,omitempty"`
+
+	// 邀请按钮文字
+	InviteButtonText string `json:"invite_button_text" bson:"invite_button_text,omitempty"`
+
+	// 成功邀请文字
+	TotalLabel string `json:"total_label" bson:"total_label,omitempty"`
+
+	// 奖励次数文字
+	RewardLabel string `json:"reward_label" bson:"reward_label,omitempty"`
+
+	// 进度单位（例如 /3）
+	ProgressSuffix string `json:"progress_suffix" bson:"progress_suffix,omitempty"`
+}
+
+// InviteImageConfig 邀请页图片
+type InviteImageConfig struct {
+
+	// 页面背景
+	Bg string `json:"bg" bson:"bg,omitempty"`
+
+	// 二维码图标
+	QRCodeIcon string `json:"qr_code_icon" bson:"qr_code_icon,omitempty"`
+
+	// 邀请按钮背景
+	InviteBtnBg string `json:"invite_btn_bg" bson:"invite_btn_bg,omitempty"`
+
+	// 奖励顶部图
+	AwardTopImg string `json:"award_top_img" bson:"award_top_img,omitempty"`
+
+	// 进度条背景图（可选）
+	ProgressBg string `json:"progress_bg" bson:"progress_bg,omitempty"`
+}
+
+// InviteShareConfig 分享配置
+type InviteShareConfig struct {
+
+	// 分享标题
+	Title string `json:"title" bson:"title,omitempty"`
+
+	// 分享副标题
+	SubTitle string `json:"sub_title" bson:"sub_title,omitempty"`
+
+	// 分享图片
+	Image string `json:"image" bson:"image,omitempty"`
+
+	// 分享路径（例如 /pages/index/index）
+	Path string `json:"path" bson:"path,omitempty"`
 }
 
 // ResourceName 返回资源名称
