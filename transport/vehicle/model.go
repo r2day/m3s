@@ -24,6 +24,8 @@ type Model struct {
 	VolumeM3    float64 `json:"volume_m3" bson:"volume_m3,omitempty"`
 	DriverName  string  `json:"driver_name" bson:"driver_name,omitempty"`
 	DriverPhone string  `json:"driver_phone" bson:"driver_phone,omitempty"`
+	FleetID     string  `json:"fleet_id" bson:"fleet_id,omitempty"`
+	FleetName   string  `json:"fleet_name" bson:"fleet_name,omitempty"`
 	Status      string  `json:"status" bson:"status"`
 	Enabled     bool    `json:"enabled" bson:"enabled"`
 	Note        string  `json:"note" bson:"note,omitempty"`

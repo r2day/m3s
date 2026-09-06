@@ -46,6 +46,9 @@ type Model struct {
 	MerchantID     string  `json:"merchant_id" bson:"merchant_id,omitempty"`
 	VehicleID      string  `json:"vehicle_id" bson:"vehicle_id,omitempty"`
 	VehiclePlate   string  `json:"vehicle_plate" bson:"vehicle_plate,omitempty"`
+	FleetID        string  `json:"fleet_id" bson:"fleet_id,omitempty"`
+	RouteID        string  `json:"route_id" bson:"route_id,omitempty"`
+	RouteName      string  `json:"route_name" bson:"route_name,omitempty"`
 	GoodsName      string  `json:"goods_name" bson:"goods_name,omitempty"`
 	GoodsWeight    float64 `json:"goods_weight" bson:"goods_weight,omitempty"`
 	GoodsVolume    float64 `json:"goods_volume" bson:"goods_volume,omitempty"`
