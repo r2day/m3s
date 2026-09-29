@@ -45,8 +45,12 @@ type Merchant struct {
 	ID string `json:"merchant_id" bson:"merchant_id,omitempty"`
 	// 序列号
 	CertSN string `json:"merchant_cert_sn" bson:"merchant_cert_sn,omitempty"`
-	// 接口key
+	// APIKey 微信支付 APIv3 密钥（32 位字符串），不是小程序 AppSecret
 	APIKey string `json:"merchant_api_key" bson:"merchant_api_key,omitempty"`
+	// AppSecret 小程序 AppSecret，服务端换 token / 用户身份 / 生成小程序码
+	AppSecret string `json:"app_secret" bson:"app_secret,omitempty"`
+	// Secret 入参别名，不单独落库；保存时写入 AppSecret
+	Secret string `json:"secret,omitempty" bson:"-"`
 	// AppID 应用id
 	AppID string `json:"app_id" bson:"app_id,omitempty"`
 	// Callback 回调地址

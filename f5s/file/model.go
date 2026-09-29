@@ -35,6 +35,12 @@ const (
 	Category
 	// Advertise 广告类型
 	Advertise
+	// Logo 商标图
+	Logo
+	// Motion 动态图
+	Motion
+	// QRCode 二维码
+	QRCode
 )
 
 // Model 打印机
