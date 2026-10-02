@@ -176,6 +176,22 @@ type HomePageConfig struct {
 	RecommendShowList []*ImageDisplayConfig `json:"recommend_show_list" bson:"recommend_show_list,omitempty"`
 	// 快速导航
 	Navigators []*Entrance `json:"navigators" bson:"navigators,omitempty"`
+	// Popups 打开小程序时的推广弹窗
+	Popups []*HomePopup `json:"popups" bson:"popups,omitempty"`
+}
+
+// HomePopup 首页推广弹窗。图片可关，点击跳到小程序页面。
+type HomePopup struct {
+	Title       string `json:"title" bson:"title,omitempty"`
+	Image       string `json:"image_url" bson:"image_url,omitempty"`
+	PackageType string `json:"package_type" bson:"package_type,omitempty"`
+	Url         string `json:"url" bson:"url,omitempty"`
+	// Frequency every 每次打开；daily 每天一次；once 只弹一次
+	Frequency string `json:"frequency" bson:"frequency,omitempty"`
+	// Start End unix 秒，0 表示不限制
+	Start   int64 `json:"start" bson:"start,omitempty"`
+	End     int64 `json:"end" bson:"end,omitempty"`
+	Enabled bool  `json:"enabled" bson:"enabled"`
 }
 
 type OrderPageConfig struct {
