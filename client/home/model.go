@@ -29,6 +29,30 @@ const (
 	DouYin
 )
 
+// ThemeTokens 与视觉模版 Tokens 同一组 json/bson 名。
+type ThemeTokens struct {
+	Primary     string `json:"primary" bson:"primary,omitempty"`
+	Secondary   string `json:"secondary" bson:"secondary,omitempty"`
+	Background  string `json:"background" bson:"background,omitempty"`
+	Price       string `json:"price" bson:"price,omitempty"`
+	TabSelected string `json:"tab_selected" bson:"tab_selected,omitempty"`
+	TabNormal   string `json:"tab_normal" bson:"tab_normal,omitempty"`
+	Button      string `json:"button" bson:"button,omitempty"`
+	ButtonText  string `json:"button_text" bson:"button_text,omitempty"`
+	Text        string `json:"text" bson:"text,omitempty"`
+	TextMuted   string `json:"text_muted" bson:"text_muted,omitempty"`
+}
+
+// ThemeBinding 这份 launch 上已应用的视觉模版。色值不写进根 background。
+type ThemeBinding struct {
+	Tokens           ThemeTokens `json:"tokens" bson:"tokens,omitempty"`
+	ShareImage       string      `json:"share_image" bson:"share_image,omitempty"`
+	SourceTemplateID string      `json:"source_template_id,omitempty" bson:"source_template_id,omitempty"`
+	SourceVersion    int         `json:"source_version,omitempty" bson:"source_version,omitempty"`
+	AppliedAt        int64       `json:"applied_at,omitempty" bson:"applied_at,omitempty"`
+	CloneID          string      `json:"clone_id,omitempty" bson:"clone_id,omitempty"`
+}
+
 // Model 小程序主页的配置
 type Model struct {
 	// 模型继承
@@ -74,6 +98,8 @@ type Model struct {
 	Loading LoadingConfig `json:"loading" bson:"loading,omitempty"`
 	// InviteConfig 邀请好友页面配置
 	InviteConfig InvitePageConfig `json:"invite_config" bson:"invite_config,omitempty"`
+	// Theme 视觉模版绑定
+	Theme ThemeBinding `json:"theme" bson:"theme,omitempty"`
 }
 
 type BaseIcon struct {
@@ -178,6 +204,13 @@ type HomePageConfig struct {
 	Navigators []*Entrance `json:"navigators" bson:"navigators,omitempty"`
 	// Popups 打开小程序时的推广弹窗
 	Popups []*HomePopup `json:"popups" bson:"popups,omitempty"`
+	// Style 首页布局。classic 经典轮播，hero 沉浸首屏，dock 底部坞，split 对开，
+	// mosaic 拼图，poster 海报，list 清单，stack 层叠，magazine 杂志，ticket 票根。
+	// 空字符串和未知值按 classic。
+	Style string `json:"style" bson:"style,omitempty"`
+	// Images 按风格存放配图。键是 hero_banner、mosaic_hero 这类槽位。
+	// 空字符串表示先用轮播第一张，再没有用内置默认图，不要把默认图写进库。
+	Images map[string]string `json:"images,omitempty" bson:"images,omitempty"`
 }
 
 // HomePopup 首页推广弹窗。图片可关，点击跳到小程序页面。
@@ -224,6 +257,15 @@ type OrderProcessConfig struct {
 type ProfilePageConfig struct {
 	// Service 服务设置
 	Service []ImageDisplayConfig `json:"service" bson:"service,omitempty"`
+	// Cover 我的页顶图
+	Cover string `json:"cover" bson:"cover,omitempty"`
+	// Style 我的页布局。classic 经典封面，card 悬浮卡片，poster 沉浸海报，list 清单，
+	// ledger 账本，mosaic 四宫格，rail 侧栏，ticket 票根，stack 层叠，magazine 杂志。
+	// 空字符串和未知值按 classic。
+	Style string `json:"style" bson:"style,omitempty"`
+	// Images 当前风格用到的配图。键是 classic_cover、mosaic_coupon 这类槽位。
+	// 空字符串表示小程序用内置默认图，不要把默认图写进库。
+	Images map[string]string `json:"images,omitempty" bson:"images,omitempty"`
 }
 
 // MenuPageConfig 菜单页面配置管理
@@ -267,6 +309,15 @@ type ApiRefreshRule struct {
 	Remark string `json:"remark" bson:"remark,omitempty"`
 }
 
+// LoginBenefits 登录页底部五个权益图 URL。从左到右，不写进 Bottom。
+type LoginBenefits struct {
+	Join     string `json:"join,omitempty" bson:"join,omitempty"`         // 入会有礼
+	Redeem   string `json:"redeem,omitempty" bson:"redeem,omitempty"`     // 积分兑换
+	Service  string `json:"service,omitempty" bson:"service,omitempty"`   // 客服咨询
+	Birthday string `json:"birthday,omitempty" bson:"birthday,omitempty"` // 生日特权
+	Mall     string `json:"mall,omitempty" bson:"mall,omitempty"`         // 积分商城
+}
+
 type LoginPage struct {
 	// 背景
 	Background string `json:"background" bson:"background,omitempty"`
@@ -278,6 +329,8 @@ type LoginPage struct {
 	Foot string `json:"foot" bson:"foot,omitempty"`
 	// 底部按钮列表 (入会有礼，生日特权，联系客服，积分商场，积分兑换）
 	Bottom []*Entrance `json:"bottom" bson:"bottom,omitempty"`
+	// Benefits 五个权益图。不改 Bottom。
+	Benefits LoginBenefits `json:"benefits" bson:"benefits,omitempty"`
 }
 
 type ButtonAddr struct {
