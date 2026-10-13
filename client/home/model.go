@@ -240,17 +240,20 @@ type OrderPageConfig struct {
 
 // OrderProcessConfig 订单状态图标设置
 type OrderProcessConfig struct {
-	// OrderInit 订单初始化
+	// Style 图标风格。line 线框，fill 实心，stamp 印章，soft 柔和。
+	// 空字符串和未知值按 line。默认图由小程序内置，不要把默认图地址写进库。
+	Style string `json:"style" bson:"style,omitempty"`
+	// OrderInit 待支付
 	OrderInit string `json:"order_init" bson:"order_init,omitempty"`
-	// OrderInitDone 订单初始化
+	// OrderInitDone 制作中
 	OrderInitDone string `json:"order_init_done" bson:"order_init_done,omitempty"`
-	// OrderPay 订单支付
+	// OrderPay 配送中
 	OrderPay string `json:"order_pay" bson:"order_pay,omitempty"`
-	// OrderPaid 订单支付完毕
+	// OrderPaid 已付款
 	OrderPaid string `json:"order_paid" bson:"order_paid,omitempty"`
-	// OrderReadyTake 订单待取餐
+	// OrderReadyTake 待取餐
 	OrderReadyTake string `json:"order_ready_take" bson:"order_ready_take,omitempty"`
-	// OrderDone 订单完毕
+	// OrderDone 已完成
 	OrderDone string `json:"order_done" bson:"order_done,omitempty"`
 }
 
@@ -266,6 +269,22 @@ type ProfilePageConfig struct {
 	// Images 当前风格用到的配图。键是 classic_cover、mosaic_coupon 这类槽位。
 	// 空字符串表示小程序用内置默认图，不要把默认图写进库。
 	Images map[string]string `json:"images,omitempty" bson:"images,omitempty"`
+	// Benefits 「我的」页会员权益。标题、说明或列表留空时，启动接口补默认文案。
+	// 默认文案不要写进库。
+	Benefits MemberBenefitsConfig `json:"benefits,omitempty" bson:"benefits,omitempty"`
+}
+
+// MemberBenefit 会员权益页的一条权益。
+type MemberBenefit struct {
+	Title   string `json:"title" bson:"title,omitempty"`
+	Summary string `json:"summary" bson:"summary,omitempty"`
+}
+
+// MemberBenefitsConfig 会员权益页。Items 为空时使用内置默认权益。
+type MemberBenefitsConfig struct {
+	Title string          `json:"title,omitempty" bson:"title,omitempty"`
+	Intro string          `json:"intro,omitempty" bson:"intro,omitempty"`
+	Items []MemberBenefit `json:"items,omitempty" bson:"items,omitempty"`
 }
 
 // MenuPageConfig 菜单页面配置管理
