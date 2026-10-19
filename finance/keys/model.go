@@ -34,6 +34,8 @@ type Model struct {
 	Type string `json:"type" bson:"type,omitempty"`
 	// 商户配置
 	MerchantConf Merchant `json:"merchant_conf" bson:"merchant_conf,omitempty"`
+	// Lakala 拉卡拉 payjp 密钥。不要把 credential 放进 Merchant.APIKey。
+	Lakala LakalaConf `json:"lakala" bson:"lakala,omitempty"`
 	// Enabled 是否启用
 	Enabled bool `json:"enabled" bson:"enabled,omitempty"`
 	// 支付单位（分/元
@@ -55,6 +57,18 @@ type Merchant struct {
 	AppID string `json:"app_id" bson:"app_id,omitempty"`
 	// Callback 回调地址
 	Callback string `json:"callback" bson:"callback,omitempty"`
+}
+
+// LakalaConf 拉卡拉网关密钥。v1 不设 base_url，host 由 SDK 固定。
+type LakalaConf struct {
+	PartnerCode    string `json:"partner_code" bson:"partner_code,omitempty"`
+	CredentialCode string `json:"credential_code" bson:"credential_code,omitempty"`
+	AppID          string `json:"app_id" bson:"app_id,omitempty"`
+	Env            string `json:"env" bson:"env,omitempty"` // test | prod
+	NotifyURL      string `json:"notify_url" bson:"notify_url,omitempty"`
+	Redirect       string `json:"redirect" bson:"redirect,omitempty"`
+	Currency       string `json:"currency" bson:"currency,omitempty"` // 空则 CNY
+	Version        string `json:"version" bson:"version,omitempty"`
 }
 
 // ResourceName 返回资源名称
