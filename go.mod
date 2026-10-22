@@ -1,6 +1,6 @@
 module github.com/r2day/m3s
 
-go 1.26.0
+go 1.26.10
 
 require (
 	github.com/open4go/model v0.0.24
