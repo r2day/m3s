@@ -350,6 +350,10 @@ type LoginPage struct {
 	Bottom []*Entrance `json:"bottom" bson:"bottom,omitempty"`
 	// Benefits 五个权益图。不改 Bottom。
 	Benefits LoginBenefits `json:"benefits" bson:"benefits,omitempty"`
+	// Style 登录页布局。classic 居中字标，poster 深色海报，card 悬浮卡片，
+	// sheet 上色下单，ticket 票根，list 清单。
+	// 空字符串和未知值按 classic。
+	Style string `json:"style" bson:"style,omitempty"`
 }
 
 type ButtonAddr struct {
