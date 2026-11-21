@@ -13,8 +13,10 @@ import (
 	"github.com/r2day/m3s/finance/keys"
 	"github.com/r2day/m3s/message/subscribe"
 	"github.com/r2day/m3s/stat/monthly"
+	"github.com/r2day/m3s/transport/actor"
 	"github.com/r2day/m3s/transport/address"
 	"github.com/r2day/m3s/transport/fleet"
+	"github.com/r2day/m3s/transport/freight"
 	"github.com/r2day/m3s/transport/order"
 	"github.com/r2day/m3s/transport/platform"
 	"github.com/r2day/m3s/transport/route"
@@ -42,8 +44,10 @@ func TestResourceAndCollectionNames(t *testing.T) {
 		{"finance/keys", &keys.Model{}, "keys", "finance_keys_config"},
 		{"message/subscribe", &subscribe.Model{}, "subscribe", "message_subscribe_flow"},
 		{"stat/monthly", &monthly.Model{}, "monthly", "stat_monthly_data"},
+		{"transport/actor", &actor.Model{}, "actor", "transport_actor_config"},
 		{"transport/address", &address.Model{}, "address", "transport_address_config"},
 		{"transport/fleet", &fleet.Model{}, "fleet", "transport_fleet_config"},
+		{"transport/freight", &freight.Model{}, "freight", "transport_freight_order"},
 		{"transport/order", &order.Model{}, "takeout", "transport_takeout_order"},
 		{"transport/platform", &platform.Model{}, "platform", "transport_platform_config"},
 		{"transport/route", &route.Model{}, "route", "transport_route_config"},
