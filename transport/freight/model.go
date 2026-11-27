@@ -13,14 +13,21 @@ const (
 
 // Place 装卸货快照。电话单独存放，不拼进 address。
 type Place struct {
-	Name    string `json:"name" bson:"name"`
-	Phone   string `json:"phone,omitempty" bson:"phone,omitempty"`
-	Region  string `json:"region,omitempty" bson:"region,omitempty"`
-	Address string `json:"address" bson:"address"`
-	Door    string `json:"door,omitempty" bson:"door,omitempty"`
-	Lat     string `json:"lat,omitempty" bson:"lat,omitempty"`
-	Lng     string `json:"lng,omitempty" bson:"lng,omitempty"`
-	City    string `json:"city" bson:"city"`
+	Name         string `json:"name" bson:"name"`
+	Phone        string `json:"phone,omitempty" bson:"phone,omitempty"`
+	Region       string `json:"region,omitempty" bson:"region,omitempty"`
+	Address      string `json:"address" bson:"address"`
+	Door         string `json:"door,omitempty" bson:"door,omitempty"`
+	Lat          string `json:"lat,omitempty" bson:"lat,omitempty"`
+	Lng          string `json:"lng,omitempty" bson:"lng,omitempty"`
+	City         string `json:"city" bson:"city"`
+	Province     string `json:"province,omitempty" bson:"province,omitempty"`
+	ProvinceCode string `json:"province_code,omitempty" bson:"province_code,omitempty"`
+	CityCode     string `json:"city_code,omitempty" bson:"city_code,omitempty"`
+	District     string `json:"district,omitempty" bson:"district,omitempty"`
+	DistrictCode string `json:"district_code,omitempty" bson:"district_code,omitempty"`
+	Street       string `json:"street,omitempty" bson:"street,omitempty"`
+	StreetCode   string `json:"street_code,omitempty" bson:"street_code,omitempty"`
 }
 
 // Application 内嵌报价。不另建集合。
